@@ -12,8 +12,19 @@ def binary_search(list, target):
             last = midpoint - 1
     return None
 
+def rec_binary_search(list, target): 
+    if len (list) == 0:
+        return False
+    else:
+        midpoint = len(list) // 2
+        if list[midpoint] == target:
+            return True
+        elif list[midpoint] < target:
+            return rec_binary_search(list[midpoint+1:], target)
+        else:
+            return rec_binary_search(list[:midpoint], target)
 numbers = [1,2,3,4,5,6,7,8]
 
-result = binary_search(numbers, 4)
+result = rec_binary_search(numbers, 4)
 
 print(result)
